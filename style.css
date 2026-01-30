@@ -231,13 +231,16 @@ ion-icon{ --ionicon-stroke-width: 20px;}
 .btn-primary::before{
     content: '';
     position: absolute;
-    top: 0;
+    top: -50%;
     left: -100%;
-    width: 100%;
-    height: 100%;
-    background: var(--accent-secondary);
-    z-index: -1;
-    transition: left var(--transition-default);
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transform: skewX(-25deg);
+    animation: buttonShine 3s infinite;
 }
 
 .btn-primary:hover{
@@ -246,6 +249,15 @@ ion-icon{ --ionicon-stroke-width: 20px;}
     color: var(--color-white-100);
     transform: translateY(-2px);
     box-shadow: 0 8px 24px var(--glow-orange);
+}
+
+@keyframes buttonShine {
+    0% {
+        left: -100%;
+    }
+    20%, 100% {
+        left: 150%;
+    }
 }
 
 img{
@@ -823,6 +835,21 @@ img{
     z-index: 20;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.project-view-btn::before{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transform: skewX(-25deg);
+    animation: buttonShine 3s infinite;
 }
 
 .project .project-item:hover .project-view-btn{
