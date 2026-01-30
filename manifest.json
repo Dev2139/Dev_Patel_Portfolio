@@ -1,0 +1,50 @@
+{
+  "name": "Dev Patel",
+  "short_name": "Dev",
+  "description": "Dev Patel - Fullstack Developer Portfolio",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#ff714a",
+  "background_color": "#000000",
+  "screenshots": [
+    {
+      "src": "/icons/screenshot-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/icons/screenshot-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "form_factor": "wide"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/images/dev2.jpg",
+      "type": "image/jpeg",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Home",
+      "short_name": "Home",
+      "description": "Go to home page",
+      "url": "/?shortcut=home",
+      "icons": [
+        {
+          "src": "/icons/icon-96.png",
+          "type": "image/png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}

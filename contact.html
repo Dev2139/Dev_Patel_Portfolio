@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff714a">
+    <meta name="description" content="Dev Patel - Contact">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dev Patel">
+    <link rel="icon" href="images/dev2.jpg" type="image/png">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
+    <link rel="manifest" href="/manifest.json">
+    <title>Dev Patel || Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <nav class="nav-mobile">
+            <div class="navbar-brand">
+                <h1 class="brand-name">Dev Patel</h1>
+            </div>
+
+            <i class="menu-toggler fa-solid fa-bars"></i>
+        </nav>
+
+        <div class="side-bar">
+            <img src="images/dev.jpg" alt="logo" class="brand-img">
+            <h1 class="brand-name">Dev <br> Patel</h1>
+
+            <nav>
+                <ul class="nav">
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="background.html">Background</a></li>
+                    <li><a href="certificate.html">Certificate</a></li>
+                    <li><a href="project.html">Project</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="social-btn-groups">
+                <a href="https://x.com/Dev_Patel2139" class="btn"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/dev-patel2139/" class="btn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/Dev2139" class="btn"><i class="fa-brands fa-github"></i></a>
+                <a href="https://leetcode.com/u/DevPatel2139/" class="btn"><i class="fa-solid fa-code"></i></a>
+                <a href="https://youtube.com/@devpatel-h4j?si=UWN28z7UcqIQguJ8" class="btn"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <section id="contact" class="contact page active">
+            <h1 class="section-heading">Contact</h1>
+            <h4 class="section-sub-heading">Get in Touch</h4>
+
+            <div class="contact-info">
+                <div class="info-box">
+                    <ion-icon name="call-outline"></ion-icon>
+                    <p>+91 6354236105</p>
+                </div>
+
+                <div class="info-box">
+                    <ion-icon name="location-outline"></ion-icon>
+                    <p>Ahmedabad</p>
+                </div>
+
+                <div class="info-box">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <p>dev.patel.codinggita@gmail.com</p>
+                </div>
+
+                <div class="info-box">
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                    <p>Hire Available</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form action="https://formspree.io/f/mwpqkgpv" method="POST">
+                    <div class="form-grid">
+                        <div class="grid-left">
+                            <input type="text" name="name" required placeholder="Full Name" autocomplete="off">
+
+                            <input type="email" name="email" required placeholder="Email Address" autocomplete="off">
+
+                            <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off">
+
+                            <input type="text" name="company" placeholder="Company / Organization" autocomplete="off">
+
+                            <input type="text" name="subject" required placeholder="Subject" autocomplete="off">
+                        </div>
+
+                        <div class="grid-right">
+                            <textarea name="message" required placeholder="Write your message here..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+        
+    </div>
+
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    
+</body>
+</html>
