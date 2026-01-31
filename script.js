@@ -207,12 +207,13 @@ function initCertificateModal() {
         const title = item.querySelector('.certificate-info h4');
         const issuer = item.querySelector('.certificate-info span');
         const year = item.querySelector('.certificate-badge');
+        const customDescription = item.getAttribute('data-description');
 
         const imageSrc = img ? (img.getAttribute('data-src') || img.getAttribute('src')) : '';
         const titleText = title ? title.textContent.trim() : 'Certificate';
         const issuerText = issuer ? issuer.textContent.trim() : 'Issuer';
         const yearText = year ? year.textContent.trim() : '';
-        const descriptionText = `Certificate awarded for ${titleText} by ${issuerText}.`;
+        const descriptionText = customDescription || `Certificate awarded for ${titleText} by ${issuerText}.`;
 
         if (modalImage) {
             modalImage.src = imageSrc;
