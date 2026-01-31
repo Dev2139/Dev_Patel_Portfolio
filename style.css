@@ -111,9 +111,21 @@ body.page-transition-out {
     animation: fadeOut 0.3s ease-out forwards;
 }
 
-/* Smooth page content transitions */
+/* Smooth page content transitions with scale and fade */
 section.page, .about.page {
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.5s cubic-bezier(.4,2,.6,1), transform 0.5s cubic-bezier(.4,2,.6,1);
+    will-change: opacity, transform;
+}
+
+.page-transition-out {
+    opacity: 0 !important;
+    transform: scale(0.97) translateY(-30px) !important;
+    pointer-events: none;
+}
+
+.page-transition-in {
+    opacity: 1 !important;
+    transform: scale(1) translateY(0) !important;
 }
 
 /* Scroll Animations */
@@ -2263,7 +2275,7 @@ img{
         linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%);
     z-index: 2;
     pointer-events: none;
-    animation: metalShimmer 8s infinite;
+    animation: metalShimmer 8s infinite alternate;
     background-size: 200% 100%, 200% 100%;
 }
 

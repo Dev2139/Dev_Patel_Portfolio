@@ -6,28 +6,22 @@ function initPageTransitions() {
     links.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            
             // Skip if it's an external link or has target="_blank"
             if (this.hasAttribute('target') || href.startsWith('http')) {
                 return;
             }
-            
             e.preventDefault();
-            
             // Update active state in navigation
             document.querySelectorAll('.nav a').forEach(navLink => {
                 navLink.classList.remove('active');
             });
             this.classList.add('active');
-            
-            // Add fade-out animation
+            // Add smooth transition out
             const currentPage = document.querySelector('section.page, .about.page');
             if (currentPage) {
-                currentPage.style.opacity = '0';
-                currentPage.style.transform = 'translateY(-20px)';
+                currentPage.classList.add('page-transition-out');
+                currentPage.classList.remove('page-transition-in');
             }
-            
-            // Load new content without page reload
             setTimeout(() => {
                 fetch(href)
                     .then(response => response.text())
@@ -36,24 +30,18 @@ function initPageTransitions() {
                         const doc = parser.parseFromString(html, 'text/html');
                         const newContent = doc.querySelector('section.page, .about.page');
                         const currentContent = document.querySelector('section.page, .about.page');
-                        
                         if (newContent && currentContent) {
-                            // Replace content
                             currentContent.innerHTML = newContent.innerHTML;
                             currentContent.id = newContent.id;
                             currentContent.className = newContent.className;
-                            
                             // Update page title
                             document.title = doc.title;
-                            
                             // Update URL without reload
                             history.pushState({page: href}, '', href);
-                            
-                            // Fade in new content
+                            // Animate in
                             setTimeout(() => {
-                                currentContent.style.opacity = '1';
-                                currentContent.style.transform = 'translateY(0)';
-                                
+                                currentContent.classList.remove('page-transition-out');
+                                currentContent.classList.add('page-transition-in');
                                 // Reinitialize page-specific scripts
                                 initPageLoadAnimations();
                                 initLazyImages();
@@ -65,10 +53,9 @@ function initPageTransitions() {
                     })
                     .catch(error => {
                         console.error('Error loading page:', error);
-                        // Fallback to normal navigation
                         window.location.href = href;
                     });
-            }, 300);
+            }, 350);
         });
     });
     
