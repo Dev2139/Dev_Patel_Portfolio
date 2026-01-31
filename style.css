@@ -350,27 +350,39 @@ img{
 
 .side-bar{
     position: absolute;
-    width: 160px;
+    width: 180px;
     height: 100%;
     padding: 30px 0;
     text-align: center;
-    background: var(--background-surface);
-    border-right: 1px solid var(--border-subtle);
+    background: linear-gradient(135deg, var(--background-surface) 0%, var(--background-surface-2) 100%);
+    border-right: 2px solid var(--accent-primary);
     overflow-y: auto;
     display: table;
     z-index: 50;
+    box-shadow: 5px 0 20px rgba(245, 158, 11, 0.1);
 }
 
 .side-bar .brand-img{
     width: 80px;
+    height: 80px;
     margin-bottom: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-primary);
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+    transition: transform 0.3s ease;
 }
 
 .side-bar .brand-name{
     text-align: center;
-    line-height: 1;
+    line-height: 1.2;
     font-size: var(--font-size-24);
     margin-bottom: 30px;
+    background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
 }
 
 .nav li a{
@@ -378,49 +390,65 @@ img{
     padding: 12px 0;
     border-top: 1px solid var(--background-dark-80);
     font-size: var(--font-size-14);
-    transition: var(--transition-default);
+    transition: all var(--transition-default);
+    position: relative;
+    display: block;
 }
 
 .nav li:last-child a{border-bottom: 1px solid var(--background-dark-80);}
 
 .nav li a:hover{
-    background: var(--background-dark-80);
-    box-shadow: inset -3px 0 0 var(--accent-secondary);
-}
-
-.nav li a.active{
-    background: var(--background-dark-80);
+    background: linear-gradient(90deg, rgba(245, 158, 11, 0.1) 0%, transparent 100%);
     box-shadow: inset -3px 0 0 var(--accent-secondary);
     color: var(--accent-secondary);
 }
 
+.nav li a.active{
+    background: linear-gradient(90deg, rgba(250, 204, 21, 0.35) 0%, transparent 100%);
+    box-shadow: inset -3px 0 0 var(--accent-tertiary);
+    color: var(--accent-tertiary);
+    font-weight: 600;
+}
+
 .social-btn-groups {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     gap: 8px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px 5px;
+    border-top: 1px solid rgba(245, 158, 11, 0.2);
+    border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .social-btn-groups .btn{
-    padding: 8px;
-    margin: 5px 2px;
-    background: var(--background-dark-70);
+    padding: 0;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.05));
     color: var(--color-white-60);
     border-radius: 50%;
-    transition: all var(--transition-default);
+    border: 2px solid rgba(245, 158, 11, 0.3);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    min-width: 36px;
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+    flex-shrink: 0;
 }
 
 .social-btn-groups .btn:hover{
-    background: var(--accent-primary);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     color: var(--color-white-100);
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px var(--glow-orange);
+    transform: translateY(-5px) scale(1.15);
+    box-shadow: 0 8px 20px var(--glow-orange);
+    border-color: var(--accent-primary);
 }
 
 .side-bar-footer{
