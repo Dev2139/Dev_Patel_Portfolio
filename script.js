@@ -1074,4 +1074,39 @@ function initSkeletonLoading() {
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
     initSkeletonLoading();
+    
+    // Auto-close sidebar functionality
+    const sidebar = document.querySelector('.side-bar');
+    const menuToggler = document.querySelector('.menu-toggler');
+    const navLinks = document.querySelectorAll('.nav a');
+    
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 1024) {
+            if (sidebar && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(e.target) && !menuToggler.contains(e.target)) {
+                    sidebar.classList.remove('active');
+                    if (menuToggler) menuToggler.classList.remove('active');
+                }
+            }
+        }
+    });
+    
+    // Close sidebar when navigating
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 1024 && sidebar && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                if (menuToggler) menuToggler.classList.remove('active');
+            }
+        });
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) {
+            if (sidebar) sidebar.classList.remove('active');
+            if (menuToggler) menuToggler.classList.remove('active');
+        }
+    });
 });
