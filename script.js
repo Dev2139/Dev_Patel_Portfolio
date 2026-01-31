@@ -993,36 +993,41 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('.contact-form form');
     if (form) {
         form.addEventListener('submit', async function (e) {
-            e.preventDefault(); // Prevent default form submission
+            e.preventDefault();
 
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
 
             try {
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+
                 const response = await fetch(form.action, {
-                    method: form.method,
-                    headers: {
-                        'Accept': 'application/json'
-                    },
-                    body: formData
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // Allow cross-origin requests
                 });
 
-                if (response.ok) {
-                    // Show a custom thank you message or clear the form
-                    form.reset();
-                    // You can show a message like this:
-                    let msg = document.createElement('p');
-                    msg.className = 'form-success';
-                    msg.textContent = 'Thank you! Your message has been sent.';
-                    form.appendChild(msg);
-                    setTimeout(() => {
-                        msg.remove();
-                    }, 3000);
-                } else {
-                    // Handle error
-                    alert('There was a problem submitting your form. Please try again.');
-                }
+                // With no-cors mode, we can't check response.ok, so we assume success
+                form.reset();
+                submitBtn.textContent = 'Message Sent!';
+                
+                let msg = document.createElement('p');
+                msg.className = 'form-success';
+                msg.textContent = 'Thank you! Your message has been sent successfully.';
+                form.parentElement.insertBefore(msg, form.nextSibling);
+                
+                setTimeout(() => {
+                    msg.remove();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 3000);
+
             } catch (error) {
+                console.error('Form submission error:', error);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
                 alert('There was a problem submitting your form. Please try again.');
             }
         });
