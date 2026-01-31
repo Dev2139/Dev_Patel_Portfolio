@@ -1028,3 +1028,50 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+// Skeleton Loading for Projects and Certificates
+function initSkeletonLoading() {
+    // Show skeleton loading when page loads
+    const projectItems = document.querySelectorAll('.project-item');
+    const certificateItems = document.querySelectorAll('.certificate-item');
+    
+    // Simulate loading delay (e.g., for images)
+    const loadingDelay = 1500; // 1.5 seconds
+    
+    // Add skeleton class temporarily
+    projectItems.forEach(item => {
+        if (item.querySelector('img')) {
+            item.classList.add('skeleton-loading');
+        }
+    });
+    
+    certificateItems.forEach(item => {
+        if (item.querySelector('img')) {
+            item.classList.add('skeleton-loading');
+        }
+    });
+    
+    // Remove skeleton class after images load
+    const allImages = document.querySelectorAll('.project-thumb, .certificate-preview img');
+    let imagesLoaded = 0;
+    
+    allImages.forEach(img => {
+        img.addEventListener('load', () => {
+            imagesLoaded++;
+            if (imagesLoaded === allImages.length) {
+                projectItems.forEach(item => item.classList.remove('skeleton-loading'));
+                certificateItems.forEach(item => item.classList.remove('skeleton-loading'));
+            }
+        });
+        
+        // Fallback: remove skeleton after timeout even if images don't load
+        setTimeout(() => {
+            projectItems.forEach(item => item.classList.remove('skeleton-loading'));
+            certificateItems.forEach(item => item.classList.remove('skeleton-loading'));
+        }, loadingDelay);
+    });
+}
+
+// Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    initSkeletonLoading();
+});

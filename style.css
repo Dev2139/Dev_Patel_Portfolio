@@ -483,6 +483,18 @@ img{
     z-index: 10;
 }
 
+/* Certificate Section Specific Styling */
+.certificate .section-heading{
+    padding: 20px 40px 10px 40px !important;
+    margin-top: 0 !important;
+    margin-bottom: 15px !important;
+}
+
+.certificate .section-sub-heading{
+    padding: 10px 40px 20px 40px !important;
+    margin-bottom: 30px !important;
+}
+
 .hero{ display: flex; }
 
 .hero-img-box{ 
@@ -828,6 +840,102 @@ img{
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 15px;
+}
+
+/* Skeleton Loading Styles */
+@keyframes skeleton-loading {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 25%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.1) 75%
+    );
+    background-size: 1000px 100%;
+    animation: skeleton-loading 2s infinite;
+    border-radius: 8px;
+}
+
+.project-item.skeleton-loading {
+    display: block !important;
+}
+
+.project-item.skeleton-loading .project-card {
+    pointer-events: none;
+}
+
+.skeleton-card-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+}
+
+.skeleton-card-title {
+    height: 20px;
+    width: 70%;
+    margin-bottom: 12px;
+}
+
+.skeleton-card-description {
+    height: 16px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.skeleton-card-description:last-of-type {
+    width: 85%;
+    margin-bottom: 15px;
+}
+
+.skeleton-card-tech {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0;
+}
+
+.skeleton-tech-badge {
+    height: 24px;
+    width: 60px;
+    border-radius: 4px;
+}
+
+.certificate-item.skeleton-loading {
+    opacity: 1;
+}
+
+.skeleton-certificate-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.skeleton-certificate-title {
+    height: 18px;
+    width: 80%;
+    margin-bottom: 8px;
+}
+
+.skeleton-certificate-org {
+    height: 14px;
+    width: 60%;
+    margin-bottom: 8px;
+}
+
+.skeleton-certificate-badge {
+    height: 20px;
+    width: 40px;
+    border-radius: 4px;
+}
 }
 
 .tech-badge{
@@ -1422,13 +1530,16 @@ img{
 
     .section-heading{
         font-size: var(--font-size-30);
-        margin-bottom: 10px;
+        padding: 40px 0 20px 0 !important;
+        margin-top: 30px !important;
+        margin-bottom: 15px !important;
         color: var(--color-white-95);
     }
 
     .section-sub-heading{
         font-size: var(--font-size-16);
-        margin-bottom: 40px;
+        padding: 20px 0 30px 0 !important;
+        margin-bottom: 30px !important;
         color: var(--color-white-80);
     }
 
@@ -1504,6 +1615,9 @@ img{
 
     .section-heading{
         font-size: var(--font-size-24);
+        padding: 40px 0 20px 0 !important;
+        margin-top: 30px !important;
+        margin-bottom: 15px !important;
     }
 
     .form-grid .grid-left input,
