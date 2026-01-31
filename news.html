@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff714a">
+    <meta name="description" content="Dev Patel - Latest Tech News">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dev Patel">
+    <link rel="icon" href="images/dev2.jpg" type="image/png">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
+    <link rel="manifest" href="/manifest.json">
+    <title>Dev Patel || Tech News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=7.0">
+</head>
+<body>
+    <div class="container">
+
+        <nav class="nav-mobile">
+            <div class="navbar-brand">
+                <h1 class="brand-name">Dev Patel</h1>
+            </div>
+
+            <i class="menu-toggler fa-solid fa-bars"></i>
+        </nav>
+
+        <div class="side-bar">
+            <img src="images/Dev002.jpeg" alt="logo" class="brand-img">
+            <h1 class="brand-name">Dev <br> Patel</h1>
+
+            <nav>
+                <ul class="nav">
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="background.html">Background</a></li>
+                    <li><a href="certificate.html">Certificate</a></li>
+                    <li><a href="project.html">Project</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <section id="news" class="news page active">
+            <h1 class="section-heading">Tech News</h1>
+            <h4 class="section-sub-heading">Latest Updates from Tech Industry</h4>
+
+            <div class="news-filter">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="tech">Technology</button>
+                <button class="filter-btn" data-category="ai">AI & ML</button>
+                <button class="filter-btn" data-category="web">Web Development</button>
+                <button class="filter-btn" data-category="startup">Startups</button>
+            </div>
+
+            <div class="news-container">
+                <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner"></i>
+                    <p>Loading latest tech news...</p>
+                </div>
+            </div>
+
+            <div class="news-error" style="display: none;">
+                <p>Unable to load news. Please try again later.</p>
+            </div>
+        </section>
+        
+    </div>
+
+    <script src="script.js?v=7.0"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
