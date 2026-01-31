@@ -1,6 +1,7 @@
-// Smooth Page Transitions
+// Smooth Page Transitions (SPA Style - No Reload)
 function initPageTransitions() {
     const links = document.querySelectorAll('a[href$=".html"]');
+    const mainContent = document.querySelector('.about.page, section.page');
     
     links.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -13,14 +14,69 @@ function initPageTransitions() {
             
             e.preventDefault();
             
-            // Add fade-out animation
-            document.body.classList.add('page-transition-out');
+            // Update active state in navigation
+            document.querySelectorAll('.nav a').forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+            this.classList.add('active');
             
-            // Navigate after animation
+            // Add fade-out animation
+            const currentPage = document.querySelector('section.page, .about.page');
+            if (currentPage) {
+                currentPage.style.opacity = '0';
+                currentPage.style.transform = 'translateY(-20px)';
+            }
+            
+            // Load new content without page reload
             setTimeout(() => {
-                window.location.href = href;
+                fetch(href)
+                    .then(response => response.text())
+                    .then(html => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+                        const newContent = doc.querySelector('section.page, .about.page');
+                        const currentContent = document.querySelector('section.page, .about.page');
+                        
+                        if (newContent && currentContent) {
+                            // Replace content
+                            currentContent.innerHTML = newContent.innerHTML;
+                            currentContent.id = newContent.id;
+                            currentContent.className = newContent.className;
+                            
+                            // Update page title
+                            document.title = doc.title;
+                            
+                            // Update URL without reload
+                            history.pushState({page: href}, '', href);
+                            
+                            // Fade in new content
+                            setTimeout(() => {
+                                currentContent.style.opacity = '1';
+                                currentContent.style.transform = 'translateY(0)';
+                                
+                                // Reinitialize page-specific scripts
+                                initPageLoadAnimations();
+                                initLazyImages();
+                                if (typeof initProjects === 'function') initProjects();
+                                if (typeof initCertificates === 'function') initCertificates();
+                                if (typeof initContactForm === 'function') initContactForm();
+                            }, 50);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading page:', error);
+                        // Fallback to normal navigation
+                        window.location.href = href;
+                    });
             }, 300);
         });
+    });
+    
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function(e) {
+        if (e.state && e.state.page) {
+            window.location.reload();
+        }
     });
 }
 
