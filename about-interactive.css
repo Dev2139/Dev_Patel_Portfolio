@@ -1,0 +1,54 @@
+/* Custom styles for interactive About section */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Pacifico&display=swap');
+
+.hero-bg-laptop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: url('images/laptop-bg.png') center/cover no-repeat;
+  opacity: 0.13;
+  pointer-events: none;
+  border-radius: 32px;
+}
+
+.hero-content-wrapper.interactive {
+  position: relative;
+  z-index: 1;
+  font-family: 'Fira Mono', 'Poppins', monospace;
+  color: #fff;
+  text-shadow: 0 2px 16px #0008;
+}
+
+.hero-content-wrapper.interactive .about-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.2rem;
+  color: #fbbf24;
+  margin-bottom: 0.5em;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 12px #0006;
+}
+
+.hero-content-wrapper.interactive .about-highlight {
+  color: #f59e0b;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.hero-content-wrapper.interactive .about-quote {
+  font-style: italic;
+  color: #fbbf24;
+  margin: 1em 0 0.5em 0;
+  font-size: 1.1em;
+  display: block;
+}
+
+.hero-content-wrapper.interactive .about-keywords {
+  color: #f59e0b;
+  font-family: 'Fira Mono', monospace;
+  font-size: 1em;
+  margin-top: 1em;
+  display: block;
+}

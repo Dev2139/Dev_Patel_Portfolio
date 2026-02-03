@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Pacifico&display=swap');
 
 :root{
     /*Background Colors*/
@@ -27,11 +28,19 @@
     --glow-purple: rgba(250, 204, 21, 0.35);
 
     /*Text colors*/
-    --color-white-100: #ffffff;
-    --color-white-95: #f1f5f9;
-    --color-white-80: #cbd5e1;
-    --color-white-70: #94a3b8;
-    --color-white-60: #64748b;
+    --color-white-100: #fff;
+    --color-white-95: #f3f4f6;
+    --color-white-80: #d1d5db;
+    --color-white-70: #a3a3a3;
+    --color-white-60: #737373;
+    --color-theme-primary: #f59e0b;
+    --color-theme-secondary: #fbbf24;
+    --color-theme-accent: #facc15;
+    --color-theme-link: #fbbf24;
+    --color-theme-highlight: #f59e0b;
+    --color-theme-heading: #fff;
+    --color-theme-subheading: #fbbf24;
+    --color-theme-muted: #a3a3a3;
     
     /*Font Size*/
     --font-size-48: 48px;
@@ -71,9 +80,65 @@
     box-sizing: border-box;
 }
 
-html{
-    font-family: "Poppins", sans-serif;
+
+html {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
     color: var(--color-white-95);
+    background: var(--background-dark-100);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Pacifico', 'Poppins', cursive;
+    color: var(--color-theme-heading);
+    letter-spacing: 0.5px;
+}
+
+h2, h3 {
+    color: var(--color-theme-subheading);
+}
+
+a, .btn-primary, .card-cta {
+    color: var(--color-theme-link);
+    font-family: 'Fira Mono', 'Poppins', monospace;
+    transition: color 0.2s;
+}
+
+a:hover, .btn-primary:hover, .card-cta:hover {
+    color: var(--color-theme-accent);
+}
+
+.about-highlight, .card-label, .about-keywords {
+    color: var(--color-theme-highlight) !important;
+    font-family: 'Fira Mono', 'Poppins', monospace;
+}
+
+.about-quote {
+    color: var(--color-theme-secondary) !important;
+    font-family: 'Pacifico', cursive;
+}
+
+.card-description, .card-handle {
+    color: var(--color-white-80);
+    font-family: 'Fira Mono', 'Poppins', monospace;
+}
+
+.btn-primary {
+    background: var(--accent-gradient);
+    color: #18181b;
+    font-family: 'Fira Mono', 'Poppins', monospace;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 2px 12px #0004;
+}
+
+.btn-primary:hover {
+    background: var(--accent-gradient-alt);
+    color: #18181b;
+}
+
+/* Muted text for subtle info */
+.text-muted {
+    color: var(--color-theme-muted) !important;
 }
 
 body{

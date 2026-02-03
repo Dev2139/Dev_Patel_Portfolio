@@ -15,6 +15,7 @@
     <title>Dev Patel || Fullstack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=7.0">
+    <link rel="stylesheet" href="about-interactive.css?v=1.0">
 </head>
 <body>
     <div class="container">
@@ -51,18 +52,17 @@
     
                 <div class="hero-content">
                     <div class="hero-content-wrapper">
-                        <p class="title">Fullstack Developer</p>
-                        <h1 class="name">Dev Patel</h1>
-                        <div class="description">
-                            <p>About Me  </p>
-                            <p>Dynamic Fullstack Developer skilled in React, Node.js, Express, Tailwind CSS and MUI, with a Passion for 
-                                crafting user-centric digital solutions. Adept at building responisve, efficient and scalable web applications.
-                                Commited to leveraging innovative technologies to deliver exceptional user experiences. Always exploring new tech to create
-                                impactful solutions. Let's connect and build something extraoridinary 🚀</p>
-                            
+                        <div class="hero-bg-laptop"></div>
+                        <div class="hero-content-wrapper interactive">
+                            <div class="about-title">👋 Hi, I'm <span class="about-highlight">Dev Patel</span></div>
+                            <h1 class="name" style="font-family:'Pacifico',cursive;font-size:2.2rem;color:#fff;text-shadow:0 2px 12px #0006;">Fullstack Developer</h1>
+                            <div class="description" style="font-size:1.08rem;line-height:1.6;">
+                                <span class="about-quote">“Building modern web apps, APIs, and digital solutions with a passion for learning and collaboration.”</span>
+                                <br>
+                                <span class="about-highlight">React</span>, <span class="about-highlight">Node.js</span>, <span class="about-highlight">Express</span>, <span class="about-highlight">Tailwind CSS</span>, <span class="about-highlight">MUI</span> | MERN | UI/UX | Cloud | AI
+                            </div>
+                            <a href="https://drive.google.com/file/d/1bnxjZvL-a8DwXLcv0IaFoX4r00YhjaXd/view?usp=sharing" target="_blank" class="btn-primary" style="margin-top:1.2em;">Download Resume</a>
                         </div>
-    
-                        <a href="https://drive.google.com/file/d/1bnxjZvL-a8DwXLcv0IaFoX4r00YhjaXd/view?usp=sharing" target="_blank" class="btn-primary">Download Resume</a>
                     </div>
                 </div>
             </div>
@@ -188,6 +188,16 @@
                     <p class="connect-subtitle">Tap any card to open the profile in a new tab. Each card is styled per network.</p>
                     
                     <div class="connect-grid">
+
+                        <!-- Demo Certificate Modal Trigger for Testing -->
+                        <div class="certificate-item" style="display:inline-block;cursor:pointer;margin:1em 0;">
+                            <img src="images/dev.jpg" alt="Certificate preview" style="width:60px;height:60px;border-radius:8px;vertical-align:middle;">
+                            <span class="certificate-info"><h4 style="display:inline;font-size:1.1em;">Demo Certificate</h4> <span>Demo Issuer</span></span>
+                            <span class="certificate-badge">2026</span>
+                        </div>
+
+                                                <!-- Demo Project Modal Trigger Button for Testing -->
+                                                <button class="btn-primary project-view-btn" data-project="0" style="margin: 2em auto; display: block;">Open Demo Project Popup</button>
                         <a href="https://github.com/Dev2139" target="_blank" class="connect-card github-card">
                             <div class="card-header">
                                 <i class="fab fa-github card-icon"></i>
@@ -265,5 +275,49 @@
     <script src="script.js?v=7.0"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+<!-- Certificate Modal Popup -->
+<div class="certificate-modal" id="certificateModal" aria-hidden="true">
+    <div class="certificate-modal-content" role="dialog" aria-modal="true" aria-labelledby="certificateModalTitle">
+        <button class="certificate-modal-close" aria-label="Close certificate modal">&times;</button>
+        <div class="certificate-modal-image">
+            <img src="" alt="Certificate preview">
+        </div>
+        <div class="certificate-modal-details">
+            <span class="certificate-year">2025</span>
+            <h3 id="certificateModalTitle">Certificate Title</h3>
+            <p class="certificate-issuer">Issuer</p>
+            <h4>About this certificate</h4>
+            <p class="certificate-description">Certificate description goes here.</p>
+            <a class="certificate-cta" href="#" target="_blank" rel="noopener">View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Project Modal Popup -->
+<div id="projectModal" class="project-modal">
+    <div class="project-modal-content">
+        <button class="modal-close-btn">&times;</button>
+        <div class="modal-body">
+            <div class="modal-details-section">
+                <h2 id="modalTitle" class="modal-project-title">Project Title</h2>
+                <div class="modal-video-section">
+                    <iframe id="modalVideo" width="100%" height="400" src="" title="Project Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <h3>Description</h3>
+                <p id="modalFullDescription" class="modal-description">Project description goes here...</p>
+                <h3>Tech Stack</h3>
+                <div class="modal-tech-stack" id="modalTechStack"></div>
+                <h3>Features</h3>
+                <ul id="modalFeatures" class="features-list"></ul>
+                <div class="modal-cta-buttons">
+                    <a id="modalLiveDemo" href="#" target="_blank" class="btn-primary modal-btn">Live Demo</a>
+                    <a id="modalSourceCode" href="#" target="_blank" class="btn-primary modal-btn">Source Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

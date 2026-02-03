@@ -234,8 +234,10 @@ function initCertificateModal() {
 
     const openModal = (item) => {
         const img = item.querySelector('img');
-        const title = item.querySelector('.certificate-info h4');
-        const issuer = item.querySelector('.certificate-info span');
+        // Support both .certificate-info h4 and direct h4
+        let title = item.querySelector('.certificate-info h4') || item.querySelector('h4');
+        // Support both .certificate-info span and direct span (issuer)
+        let issuer = item.querySelector('.certificate-info span') || item.querySelector('span:not(.certificate-badge):not(.certificate-info)');
         const year = item.querySelector('.certificate-badge');
         const customDescription = item.getAttribute('data-description');
 
