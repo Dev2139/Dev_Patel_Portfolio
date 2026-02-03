@@ -1,3 +1,45 @@
+// GitHub Stats Fetcher for Contact Card
+function updateGitHubCard() {
+    const desc = document.querySelector('.github-description');
+    if (!desc) return;
+    fetch('https://api.github.com/users/Dev2139')
+        .then(res => res.json())
+        .then(data => {
+            if (data && data.login) {
+                desc.innerHTML =
+                    `Repos: <b>${data.public_repos ?? '?'}</b> &bull; Followers: <b>${data.followers ?? '?'}</b> &bull; Following: <b>${data.following ?? '?'}</b><br>` +
+                    `GitHub user since <b>${(data.created_at ? new Date(data.created_at).getFullYear() : '?')}</b>.`;
+            } else {
+                desc.innerHTML = 'Unable to load GitHub stats.';
+            }
+        })
+        .catch(() => {
+            desc.innerHTML = 'Unable to load GitHub stats.';
+        });
+}
+window.addEventListener('DOMContentLoaded', updateGitHubCard);
+// LeetCode Stats Fetcher for Contact Card
+function updateLeetCodeCard() {
+    const desc = document.querySelector('.leetcode-description');
+    if (!desc) return;
+    fetch('https://leetcode-stats-api.herokuapp.com/DevPatel2139')
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success' || data.totalSolved) {
+                desc.innerHTML =
+                    `Rank: <b>${data.ranking ?? '?'}</b> &bull; ` +
+                    `${data.totalSolved ?? '?'} solved (Easy: ${data.easySolved ?? '?'} / ${data.totalEasy ?? '?'}, ` +
+                    `Medium: ${data.mediumSolved ?? '?'} / ${data.totalMedium ?? '?'}, ` +
+                    `Hard: ${data.hardSolved ?? '?'} / ${data.totalHard ?? '?'})`;
+            } else {
+                desc.innerHTML = 'Unable to load LeetCode stats.';
+            }
+        })
+        .catch(() => {
+            desc.innerHTML = 'Unable to load LeetCode stats.';
+        });
+}
+window.addEventListener('DOMContentLoaded', updateLeetCodeCard);
 // Smooth Page Transitions (SPA Style - No Reload)
 function initPageTransitions() {
     const links = document.querySelectorAll('a[href$=".html"]');
