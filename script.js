@@ -45,8 +45,8 @@ function initPageTransitions() {
                                 // Reinitialize page-specific scripts
                                 initPageLoadAnimations();
                                 initLazyImages();
-                                if (typeof initProjects === 'function') initProjects();
-                                if (typeof initCertificates === 'function') initCertificates();
+                                initCertificateModalIfNeeded();
+                                initProjectModal();
                                 if (typeof initContactForm === 'function') initContactForm();
                             }, 50);
                         }
@@ -180,6 +180,7 @@ function initCertificateModal() {
     const items = document.querySelectorAll('.certificate-item');
     const modal = document.querySelector('#certificateModal');
     if (!items.length || !modal) return;
+    
 
     const modalImage = modal.querySelector('.certificate-modal-image img');
     const modalTitle = modal.querySelector('#certificateModalTitle');
@@ -239,7 +240,15 @@ function initCertificateModal() {
     });
 }
 
-window.addEventListener('DOMContentLoaded', initCertificateModal);
+// Initialize certificate modal if on certificate page
+function initCertificateModalIfNeeded() {
+    const items = document.querySelectorAll('.certificate-item');
+    if (items.length > 0) {
+        initCertificateModal();
+    }
+}
+
+window.addEventListener('DOMContentLoaded', initCertificateModalIfNeeded);
 
 const menuToggler = document.querySelector('.menu-toggler');
 const sideBar = document.querySelector('.side-bar');
@@ -255,16 +264,12 @@ const projectsData = [
         description: "Complete Invoice, Expense & Report Management System with comprehensive financial tracking and automated reporting features.",
         fullDescription: "A complete ERP solution designed for small to medium enterprises to manage invoices, expenses, and generate detailed reports. Features include multi-user support, role-based access, real-time dashboards, and export capabilities.",
         videoUrl: "https://www.youtube.com/embed/WjkbQZY-KKw?si=2s44jw1GGWVyPzKT",
-        techStack: ["React", "Node.js", "MongoDB", "Express"],
-        challenges: [
-            "Managing complex financial calculations across multiple modules",
-            "Implementing real-time data synchronization",
-            "Handling large datasets with optimal performance"
-        ],
-        solutions: [
-            "Utilized Redux for state management and data flow",
-            "Implemented WebSocket for real-time updates",
-            "Optimized database queries and added caching mechanisms"
+        techStack: ["React", "Node.js", "MongoDB", "Express", "ANT Design", "Material-UI", "Bootstrap", "Tailwind CSS", "Chart.js", "Cloudinary"],
+        features: [
+            "Multi-user support with role-based access control",
+            "Real-time dashboards and analytics",
+            "Automated invoice generation and expense tracking",
+            "Export capabilities for financial reports"
         ],
         liveDemo: "https://invoxa-erp.netlify.app/",
         github: ""
@@ -275,16 +280,12 @@ const projectsData = [
         description: "A MERN Stack Project for travel enthusiasts to share and explore travel experiences.",
         fullDescription: "A full-stack social platform where users can document their travel experiences, share photos, and discover travel routes. Features include real-time messaging, location tracking, and community features.",
         videoUrl: "https://www.youtube.com/embed/NHuRHLuBQTE?si=yfq2Ju7jYVQpz8Xg",
-        techStack: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-        challenges: [
-            "Implementing image optimization for fast uploads",
-            "Building real-time notification system",
-            "Handling location data efficiently"
-        ],
-        solutions: [
-            "Used Cloudinary for image storage and optimization",
-            "Implemented Socket.io for real-time notifications",
-            "Utilized Mapbox for location-based features"
+        techStack: ["React", "Node.js", "MongoDB", "Tailwind CSS", "Cloudinary", "React Router", "MUI"],
+        features: [
+            "Image upload and optimization with Cloudinary",
+            "Real-time messaging and notifications with Socket.io",
+            "Location tracking and mapping with Mapbox",
+            "Community features for sharing travel experiences"
         ],
         liveDemo: "https://roammemoirs.netlify.app/",
         github: "https://github.com/Dev2139/travel_diaries"
@@ -295,16 +296,12 @@ const projectsData = [
         description: "Home Rental and Management Platform with advanced search and booking features.",
         fullDescription: "A comprehensive platform for property listings and management. Features include advanced search filters, property management dashboard, booking system, and payment integration.",
         videoUrl: "https://www.youtube.com/embed/_t3rFtIa-lY?si=-18QVkRvHTuy1uQL",
-        techStack: ["React", "Express", "MySQL", "Stripe"],
-        challenges: [
-            "Complex search algorithm with multiple filters",
-            "Payment gateway integration",
-            "Property availability management"
-        ],
-        solutions: [
-            "Implemented Elasticsearch for advanced search",
-            "Integrated Stripe API for secure payments",
-            "Built automated availability sync system"
+        techStack: ["React", "Express", "Postgres", "Stripe", "Supabase", "JWT", "React Router", "Tailwind CSS", "Cloudinary", "React DOM", "MUI", "MapBox"],
+        features: [
+            "Advanced search filters for property discovery",
+            "Secure payment integration with Stripe",
+            "Automated property availability management",
+            "Comprehensive property management dashboard"
         ],
         liveDemo: "https://rental-management-4l5m.vercel.app/",
         github: "https://github.com/Dev2139/Rental_Management"
@@ -315,16 +312,11 @@ const projectsData = [
         description: "College Prediction Based on Exam Scores using Machine Learning.",
         fullDescription: "An ML-powered application that predicts suitable colleges based on student exam scores. Uses historical data and algorithms to provide accurate college recommendations.",
         videoUrl: "https://www.youtube.com/embed/eO0pg2DpbL8?si=SMm4XkdVCLSOKtFb",
-        techStack: ["React", "Python", "Machine Learning", "Flask"],
-        challenges: [
-            "Building accurate ML model with limited data",
-            "Integrating Python backend with React frontend",
-            "Ensuring model accuracy and reliability"
-        ],
-        solutions: [
-            "Used scikit-learn for model training and validation",
-            "Implemented Flask REST API for backend communication",
-            "Cross-validated model with multiple algorithms"
+        techStack: ["NextJs", "Tailwind CSS", "MUI", "JSON data"],
+        features: [
+            "Historical data analysis for recommendations",
+            "Accurate scoring algorithm",
+            "User-friendly interface for score input"
         ],
         liveDemo: "https://codinggita-collegepredictor.netlify.app/",
         github: "https://github.com/Dev2139/codinggita-collegepredictor"
@@ -335,16 +327,12 @@ const projectsData = [
         description: "Interview Transforming Application with real-time video integration.",
         fullDescription: "A modern interview platform that helps candidates prepare and conduct interviews with real-time video, audio, code editor, and whiteboard features.",
         videoUrl: "https://www.youtube.com/embed/6NKHB6UhRHM?si=8xRj1HwS-RgjJoHa",
-        techStack: ["React", "WebRTC", "Node.js", "Socket.io"],
-        challenges: [
-            "Implementing stable WebRTC connections",
-            "Managing real-time communication",
-            "Code execution environment"
-        ],
-        solutions: [
-            "Used PeerJS library for WebRTC abstraction",
-            "Implemented Socket.io for signaling and real-time features",
-            "Integrated Monaco Editor for code execution"
+        techStack: ["Nextjs", "WebRTC", "Node.js", "Socket.io", "Tailwind CSS", "MUI", "React Router", "Clerk", ],
+        features: [
+            "Real-time video and audio communication",
+            "Interactive code editor for technical interviews",
+            "Virtual whiteboard for problem solving",
+            "Screen sharing capabilities"
         ],
         liveDemo: "",
         github: "https://github.com/Dev2139/YOOM"
@@ -535,16 +523,11 @@ const projectsData = [
         description: "Streaming Platform Clone with Video Content.",
         fullDescription: "A clone of Hotstar streaming platform with video playback, recommendations, and user authentication.",
         videoUrl: "https://www.youtube.com/embed/hTtKOtX6AKc?si=mK6yllidhilPafsD",
-        techStack: ["React", "API Integration", "Firebase"],
-        challenges: [
-            "Video streaming",
-            "Content recommendation",
-            "User authentication"
-        ],
-        solutions: [
-            "Integrated video streaming API",
-            "Implemented recommendation algorithm",
-            "Built Firebase authentication"
+        techStack: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Responsive video player",
+            "Content recommendation UI",
+            "User authentication interface"
         ],
         liveDemo: "https://hotstar-by-devpatel.netlify.app/",
         github: ""
@@ -555,16 +538,11 @@ const projectsData = [
         description: "E-commerce Platform Clone with Full Features.",
         fullDescription: "A fully functional Amazon clone with product listing, shopping cart, checkout, and order management features.",
         videoUrl: "https://www.youtube.com/embed/7yLnKHquUeY?si=nzadiAYmdOr0wu6x",
-        techStack: ["React", "Firebase", "Stripe", "Redux"],
-        challenges: [
-            "Cart management",
-            "Payment integration",
-            "Database design"
-        ],
-        solutions: [
-            "Used Redux for state management",
-            "Integrated Stripe for payments",
-            "Built Firestore database structure"
+        techStack: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Product listing interface",
+            "Shopping cart functionality",
+            "Checkout process UI"
         ],
         liveDemo: "https://amazon-by-devpatel.netlify.app/",
         github: ""
@@ -575,16 +553,11 @@ const projectsData = [
         description: "E-commerce Shopping Platform Clone.",
         fullDescription: "A feature-rich Flipkart clone with product search, filtering, reviews, and a complete checkout system.",
         videoUrl: "https://www.youtube.com/embed/LDHaIsArjqA?si=sGnF6ou3Moxn88BE",
-        techStack: ["React", "Redux", "Axios", "Node.js"],
-        challenges: [
-            "Product filtering algorithm",
-            "Search functionality",
-            "Review system"
-        ],
-        solutions: [
-            "Implemented advanced filtering logic",
-            "Built search engine with debouncing",
-            "Created rating and review system"
+        techStack: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Product search interface",
+            "Filtering system",
+            "Review and rating UI"
         ],
         liveDemo: "https://flip2139.netlify.app/",
         github: ""
@@ -595,16 +568,11 @@ const projectsData = [
         description: "Video Streaming Platform Clone with Content Library.",
         fullDescription: "A Netflix clone with streaming capability, user profiles, watchlist, and personalized recommendations.",
         videoUrl: "https://www.youtube.com/embed/A_2ut2xUbpw?si=hKGC81o_7NGTw-ZE",
-        techStack: ["React", "Firebase", "TMDB API"],
-        challenges: [
-            "Video streaming",
-            "User profiles",
-            "Watchlist management"
-        ],
-        solutions: [
-            "Integrated TMDB API for content",
-            "Built user profile system",
-            "Created personalized watchlist"
+        techStack: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Video streaming interface",
+            "User profile UI",
+            "Watchlist functionality"
         ],
         liveDemo: "https://project2139.netlify.app/",
         github: ""
@@ -615,16 +583,11 @@ const projectsData = [
         description: "Music Streaming Platform Clone with Playlist Management.",
         fullDescription: "A Spotify clone with music streaming, playlist creation, user authentication, and personalized recommendations.",
         videoUrl: "https://www.youtube.com/embed/KFASyLGTaQU?si=cPAFnkYYizvCZ3e_",
-        techStack: ["React", "Spotify API", "Node.js"],
-        challenges: [
-            "Music streaming integration",
+        techStack: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Music streaming interface",
             "Playlist management",
-            "User authentication"
-        ],
-        solutions: [
-            "Integrated Spotify Web API",
-            "Built playlist CRUD operations",
-            "Implemented OAuth authentication"
+            "User profile UI"
         ],
         liveDemo: "https://spotify2139.netlify.app/",
         github: ""
@@ -636,15 +599,10 @@ const projectsData = [
         fullDescription: "A fully functional 2048 game with smooth animations, score tracking, and game state management.",
         videoUrl: "https://www.youtube.com/embed/Xi5dOJkYX1s?si=kTbeI_5a5R3RnStx",
         techStack: ["HTML", "CSS", "JavaScript"],
-        challenges: [
-            "Game logic implementation",
-            "Animations",
-            "Score management"
-        ],
-        solutions: [
-            "Implemented efficient tile movement algorithm",
-            "Built smooth CSS animations",
-            "Created local storage for high scores"
+        features: [
+            "Smooth animations",
+            "Score tracking",
+            "Game state management"
         ],
         liveDemo: "https://2048-by-dev.netlify.app/",
         github: ""
@@ -655,36 +613,26 @@ const projectsData = [
         description: "Classic Strategy Game with AI Opponent.",
         fullDescription: "An interactive Stone-Paper-Scissor game with AI opponent, score tracking, and game statistics.",
         videoUrl: "https://www.youtube.com/embed/nyXugDebnh0?si=bj3rfb7YFMuvvcUn",
-        techStack: ["React", "JavaScript", "CSS"],
-        challenges: [
-            "AI logic",
-            "Game state management",
-            "UI responsiveness"
-        ],
-        solutions: [
-            "Built simple AI with random selection",
-            "Used React hooks for state management",
-            "Responsive design with Tailwind"
+        techStack: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "AI opponent",
+            "Score tracking",
+            "Game statistics"
         ],
         liveDemo: "https://sps2139.netlify.app/",
         github: ""
     },
     {
-        id: 21,
+        id: 21, 
         title: "Hangman Game",
         description: "Word Guessing Game with Hint System.",
         fullDescription: "An interactive Hangman game with word difficulty levels, hints, score tracking, and game statistics.",
         videoUrl: "https://www.youtube.com/embed/zp9j6O1_-wg?si=s0NW_c2aIK9hOzf5",
-        techStack: ["React", "JavaScript"],
-        challenges: [
-            "Word selection algorithm",
-            "Game logic",
-            "UI design"
-        ],
-        solutions: [
-            "Created word database by difficulty",
-            "Implemented game state management",
-            "Built intuitive game interface"
+        techStack: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Word difficulty levels",
+            "Hint system",
+            "Score tracking"
         ],
         liveDemo: "https://hangman2139.netlify.app/",
         github: ""
@@ -695,16 +643,11 @@ const projectsData = [
         description: "Interactive Board Game with AI and Multiplayer.",
         fullDescription: "A fully functional Tic-Tac-Toe game with AI opponent, multiplayer mode, and unbeatable algorithm.",
         videoUrl: "https://www.youtube.com/embed/dfFXS-s4U-Y?si=pPyiHu-AkD5A6rvJ",
-        techStack: ["React", "JavaScript"],
-        challenges: [
-            "Minimax algorithm",
-            "Game state management",
-            "Win detection"
-        ],
-        solutions: [
-            "Implemented minimax algorithm for AI",
-            "Built unbeatable AI opponent",
-            "Created responsive board design"
+        techStack: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "AI opponent",
+            "Multiplayer mode",
+            "Unbeatable algorithm"
         ],
         liveDemo: "https://xo2139.netlify.app/",
         github: ""
@@ -715,16 +658,11 @@ const projectsData = [
         description: "Action Combat Game with Physics Engine.",
         fullDescription: "An interactive 2D fighting game with character animations, physics simulation, and multiplayer support.",
         videoUrl: "https://www.youtube.com/embed/ztJLe81nG1s?si=PzY_edszXya3quRh",
-        techStack: ["JavaScript", "Canvas API"],
-        challenges: [
+        techStack: ["HTML", "CSS", "JavaScript"],
+        features: [
+            "Character animations",
             "Physics simulation",
-            "Collision detection",
-            "Animation timing"
-        ],
-        solutions: [
-            "Implemented physics with velocity and acceleration",
-            "Built collision detection system",
-            "Created smooth sprite animations"
+            "Multiplayer support"
         ],
         liveDemo: "https://fighting-game-by-dev.netlify.app/",
         github: ""
@@ -930,6 +868,11 @@ filterBtn.forEach((btn, index) => {
         const projectItems = document.querySelectorAll('.project .project-item');
         const filterText = this.textContent.trim();
 
+        // Reset animation for all items
+        projectItems.forEach(item => {
+            item.style.animationDelay = '0s';
+        });
+
         projectItems.forEach(item => {
             const category = item.getAttribute('data-category');
             
@@ -946,20 +889,42 @@ filterBtn.forEach((btn, index) => {
                 item.classList.remove('active');
             }
         });
+        
+        // Add staggered animation to visible items
+        setTimeout(() => {
+            const visibleItems = document.querySelectorAll('.project .project-item.active');
+            visibleItems.forEach((item, idx) => {
+                item.style.animationDelay = `${idx * 0.1}s`;
+            });
+        }, 50);
     });
 });
 
-/* Project Modal Functionality */
-const projectModal = document.getElementById('projectModal');
-const modalCloseBtn = document.querySelector('.modal-close-btn');
-const projectViewBtns = document.querySelectorAll('.project-view-btn');
+/* Helper function to determine tech badge class based on technology name */
+function getTechBadgeClass(techName) {
+    if (techName.includes('react')) return 'react';
+    if (techName.includes('node') || techName.includes('express')) return 'node';
+    if (techName.includes('mongo') || techName.includes('database')) return 'mongo';
+    if (techName.includes('python')) return 'python';
+    if (techName.includes('ml') || techName.includes('machine learning')) return 'ml';
+    return '';
+}
 
-if (projectModal && modalCloseBtn) {
+/* Project Modal Functionality */
+function initProjectModal() {
+    const projectModal = document.getElementById('projectModal');
+    const modalCloseBtn = document.querySelector('.modal-close-btn');
+    const projectViewBtns = document.querySelectorAll('.project-view-btn');
+    
+    if (!projectModal || !modalCloseBtn || !projectViewBtns.length) return;
     projectViewBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
+            console.log('Project view button clicked!');
             const projectId = parseInt(this.getAttribute('data-project'));
+            console.log('Project ID:', projectId);
             const project = projectsData[projectId];
+            console.log('Project data found:', !!project);
             
             if (project) {
                 // Populate modal with project data
@@ -969,21 +934,19 @@ if (projectModal && modalCloseBtn) {
                 
                 // Populate tech stack
                 const techStackContainer = document.getElementById('modalTechStack');
-                techStackContainer.innerHTML = project.techStack.map(tech => 
-                    `<span class="tech-badge">${tech}</span>`
-                ).join('');
+                techStackContainer.innerHTML = project.techStack.map(tech => {
+                    // Get a class based on the technology
+                    const techClass = getTechBadgeClass(tech.toLowerCase());
+                    return `<span class="tech-badge ${techClass}">${tech}</span>`;
+                }).join('');
                 
-                // Populate challenges
-                const challengesContainer = document.getElementById('modalChallenges');
-                challengesContainer.innerHTML = project.challenges.map(challenge => 
-                    `<li>${challenge}</li>`
-                ).join('');
-                
-                // Populate solutions
-                const solutionsContainer = document.getElementById('modalSolutions');
-                solutionsContainer.innerHTML = project.solutions.map(solution => 
-                    `<li>${solution}</li>`
-                ).join('');
+                // Populate features
+                const featuresContainer = document.getElementById('modalFeatures');
+                if (featuresContainer) {
+                    featuresContainer.innerHTML = project.features ? project.features.map(feature => 
+                        `<li>${feature}</li>`
+                    ).join('') : '<li>No specific features listed</li>';
+                }
                 
                 // Set CTA buttons
                 const liveDemoBtn = document.getElementById('modalLiveDemo');
@@ -1007,14 +970,19 @@ if (projectModal && modalCloseBtn) {
                 projectModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
+            else {
+                console.error(`Project with ID ${projectId} not found in projectsData array.`);
+            }
         });
     });
 
     // Close modal when close button is clicked
-    modalCloseBtn.addEventListener('click', function() {
-        projectModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', function() {
+            projectModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
 
     // Close modal when clicking outside of it
     projectModal.addEventListener('click', function(e) {
@@ -1026,7 +994,7 @@ if (projectModal && modalCloseBtn) {
 
     // Close modal on Escape key
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && projectModal.classList.contains('active')) {
+        if (projectModal && e.key === 'Escape' && projectModal.classList.contains('active')) {
             projectModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
@@ -1034,6 +1002,7 @@ if (projectModal && modalCloseBtn) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    initProjectModal();
     const form = document.querySelector('.contact-form form');
     if (form) {
         form.addEventListener('submit', async function (e) {
