@@ -1224,25 +1224,25 @@ img{
     box-shadow: 0 12px 30px rgba(245, 158, 11, 0.4);
 }
 
-/* Centered Floating Project Popup Card Styles */
+/* Blurred Backdrop Centered Project Popup Styles */
 .project-modal{
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    bottom: auto;
-    right: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 99999;
-    pointer-events: none;
-    background: transparent;
-    backdrop-filter: none;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.25s ease;
 }
 
 .project-modal.active{
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .project-modal-content{
     pointer-events: auto;

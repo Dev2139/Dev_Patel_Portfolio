@@ -1039,8 +1039,9 @@ function initProjectModal() {
                 }
             }
             
-            // Show floating popup card
+            // Show modal and lock background scrolling
             projectModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
     });
 
