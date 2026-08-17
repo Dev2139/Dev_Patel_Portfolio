@@ -3,19 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ff714a">
-    <meta name="description" content="Dev Patel - Fullstack Developer | React, Node.js, Express, Tailwind CSS, MUI | Building Scalable Web Applications">
+    <meta name="theme-color" content="#f59e0b">
+    <meta name="description" content="Dev Patel — Full-Stack Developer & Software Engineer. Specializing in React.js, Next.js, Node.js, Express, MongoDB, REST APIs, and AI-driven applications.">
+    <meta name="author" content="Dev Patel">
+    <meta name="keywords" content="Dev Patel, Full-Stack Developer, React.js, Next.js, Node.js, Express.js, Software Engineer, Portfolio, CodingGita, Rai University">
+
+    <!-- OpenGraph / Facebook / LinkedIn Social Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devpatel.portfolio">
+    <meta property="og:title" content="Dev Patel || Full-Stack Developer & Software Engineer">
+    <meta property="og:description" content="Building scalable web applications, real-time architectures, and data-driven systems with React, Next.js, Node.js, and MongoDB.">
+    <meta property="og:image" content="images/dev.jpg">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dev Patel || Full-Stack Developer">
+    <meta name="twitter:description" content="Building scalable web applications, real-time architectures, and data-driven systems with React, Next.js, Node.js, and MongoDB.">
+    <meta name="twitter:image" content="images/dev.jpg">
+
+    <!-- PWA & Mobile Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Dev Patel">
     <link rel="icon" href="images/dev2.jpg" type="image/png">
-    <link rel="apple-touch-icon" href="/icons/icon-192.png">
-    <link rel="manifest" href="/manifest.json">
-    <title>Dev Patel || Fullstack Developer</title>
+    <link rel="apple-touch-icon" href="images/dev2.jpg">
+    <link rel="manifest" href="manifest.json">
+
+    <title>Dev Patel || Full-Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=7.0">
-    <link rel="stylesheet" href="about-interactive.css?v=1.0">
+    <link rel="stylesheet" href="style.css?v=8.0">
+    <link rel="stylesheet" href="about-interactive.css?v=2.0">
+
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dev Patel",
+      "jobTitle": "Full-Stack Developer & Software Engineer",
+      "email": "mailto:dev.patel.codinggita@gmail.com",
+      "sameAs": [
+        "https://linkedin.com/in/dev-patel2139",
+        "https://github.com/Dev2139",
+        "https://x.com/Dev_Patel2139"
+      ],
+      "knowsAbout": [
+        "Full-Stack Web Development",
+        "React.js",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "REST API",
+        "Data Analytics"
+      ]
+    }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -204,7 +249,7 @@
                             </div>
                             <h3>GitHub</h3>
                             <p class="card-handle">@Dev2139</p>
-                            <p class="card-description github-description">Loading GitHub stats...</p>
+                            <p class="card-description">Building open-source full-stack projects & scalable applications.</p>
                             <div class="card-cta">View profile <i class="fa-solid fa-arrow-right"></i></div>
                         </a>
 
@@ -248,7 +293,7 @@
                             </div>
                             <h3>LeetCode</h3>
                             <p class="card-handle">@DevPatel2139</p>
-                            <p class="card-description leetcode-description">Loading LeetCode stats...</p>
+                            <p class="card-description">Solving Data Structures, Algorithms & competitive coding challenges.</p>
                             <div class="card-cta">View profile <i class="fa-solid fa-arrow-right"></i></div>
                         </a>
 
@@ -262,19 +307,6 @@
                             <p class="card-description">Tech, coding tutorials, MERN stack and AI-based projects.</p>
                             <div class="card-cta">View profile <i class="fa-solid fa-arrow-right"></i></div>
                         </a>
-
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-    </div>
-
-    <script src="script.js?v=7.0"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
 
 <!-- Certificate Modal Popup -->
 <div class="certificate-modal" id="certificateModal" aria-hidden="true">
@@ -302,7 +334,12 @@
             <div class="modal-details-section">
                 <h2 id="modalTitle" class="modal-project-title">Project Title</h2>
                 <div class="modal-video-section">
-                    <iframe id="modalVideo" width="100%" height="400" src="" title="Project Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe id="modalVideo" width="100%" height="420" src="" title="Project Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div id="modalWatchYoutube" style="margin-top: 6px; text-align: right;">
+                        <a id="modalYoutubeLink" href="#" target="_blank" style="color: #ff6b6b; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                            <i class="fab fa-youtube"></i> Watch Video on YouTube
+                        </a>
+                    </div>
                 </div>
                 <h3>Description</h3>
                 <p id="modalFullDescription" class="modal-description">Project description goes here...</p>
@@ -318,5 +355,12 @@
         </div>
     </div>
 </div>
+        </section>
+        
+    </div>
+
+    <script src="script.js?v=7.0"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

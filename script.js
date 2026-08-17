@@ -1,45 +1,4 @@
-// GitHub Stats Fetcher for Contact Card
-function updateGitHubCard() {
-    const desc = document.querySelector('.github-description');
-    if (!desc) return;
-    fetch('https://api.github.com/users/Dev2139')
-        .then(res => res.json())
-        .then(data => {
-            if (data && data.login) {
-                desc.innerHTML =
-                    `Repos: <b>${data.public_repos ?? '?'}</b> &bull; Followers: <b>${data.followers ?? '?'}</b> &bull; Following: <b>${data.following ?? '?'}</b><br>` +
-                    `GitHub user since <b>${(data.created_at ? new Date(data.created_at).getFullYear() : '?')}</b>.`;
-            } else {
-                desc.innerHTML = 'Unable to load GitHub stats.';
-            }
-        })
-        .catch(() => {
-            desc.innerHTML = 'Unable to load GitHub stats.';
-        });
-}
-window.addEventListener('DOMContentLoaded', updateGitHubCard);
-// LeetCode Stats Fetcher for Contact Card
-function updateLeetCodeCard() {
-    const desc = document.querySelector('.leetcode-description');
-    if (!desc) return;
-    fetch('https://leetcode-stats-api.herokuapp.com/DevPatel2139')
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 'success' || data.totalSolved) {
-                desc.innerHTML =
-                    `Rank: <b>${data.ranking ?? '?'}</b> &bull; ` +
-                    `${data.totalSolved ?? '?'} solved (Easy: ${data.easySolved ?? '?'} / ${data.totalEasy ?? '?'}, ` +
-                    `Medium: ${data.mediumSolved ?? '?'} / ${data.totalMedium ?? '?'}, ` +
-                    `Hard: ${data.hardSolved ?? '?'} / ${data.totalHard ?? '?'})`;
-            } else {
-                desc.innerHTML = 'Unable to load LeetCode stats.';
-            }
-        })
-        .catch(() => {
-            desc.innerHTML = 'Unable to load LeetCode stats.';
-        });
-}
-window.addEventListener('DOMContentLoaded', updateLeetCodeCard);
+
 // Smooth Page Transitions (SPA Style - No Reload)
 function initPageTransitions() {
     const links = document.querySelectorAll('a[href$=".html"]');
@@ -324,6 +283,7 @@ const projectsData = [
         description: "Full-stack MERN restaurant management platform streamlining menu, order, customer, and billing operations.",
         fullDescription: "Developed a full-stack restaurant management system to streamline menu, order, customer, and billing operations using the MERN stack. Built responsive user interfaces and REST APIs with secure authentication and efficient database management, delivering a scalable solution for real-world restaurant operations.",
         videoUrl: "",
+        image: "images/Restoplus.png",
         techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API", "Tailwind CSS", "JWT Auth"],
         features: [
             "End-to-end menu management and order processing workflow",
@@ -971,93 +931,123 @@ function getTechBadgeClass(techName) {
     return '';
 }
 
-/* Project Modal Functionality */
+/* Project Modal Functionality with Event Delegation */
 function initProjectModal() {
-    const projectModal = document.getElementById('projectModal');
-    const modalCloseBtn = document.querySelector('.modal-close-btn');
-    const projectViewBtns = document.querySelectorAll('.project-view-btn');
-    
-    if (!projectModal || !modalCloseBtn || !projectViewBtns.length) return;
-    projectViewBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('Project view button clicked!');
-            const projectId = parseInt(this.getAttribute('data-project'));
-            console.log('Project ID:', projectId);
-            const project = projectsData[projectId];
-            console.log('Project data found:', !!project);
+    function closeModal() {
+        const projectModal = document.getElementById('projectModal');
+        if (!projectModal) return;
+        projectModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        const modalVideo = document.getElementById('modalVideo');
+        if (modalVideo) modalVideo.src = ''; // Stop video audio on close
+    }
+
+    // Global event delegation for View Details buttons
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.project-view-btn');
+        if (!btn) {
+            // Check for close button or backdrop click
+            if (e.target.closest('.modal-close-btn')) {
+                closeModal();
+            } else if (e.target.classList.contains('project-modal')) {
+                closeModal();
+            }
+            return;
+        }
+
+        e.preventDefault();
+        const projectModal = document.getElementById('projectModal');
+        if (!projectModal) return;
+
+        const projectId = parseInt(btn.getAttribute('data-project'));
+        const project = projectsData[projectId];
+        
+        if (project) {
+            // Populate modal with project data
+            const modalTitle = document.getElementById('modalTitle');
+            if (modalTitle) modalTitle.textContent = project.title;
             
-            if (project) {
-                // Populate modal with project data
-                document.getElementById('modalTitle').textContent = project.title;
-                document.getElementById('modalVideo').src = project.videoUrl;
-                document.getElementById('modalFullDescription').textContent = project.fullDescription;
+            const videoSection = document.querySelector('.modal-video-section');
+            const modalVideo = document.getElementById('modalVideo');
+            const modalYoutubeLink = document.getElementById('modalYoutubeLink');
+            
+            if (project.videoUrl && modalVideo) {
+                let videoId = '';
+                if (project.videoUrl.includes('/embed/')) {
+                    videoId = project.videoUrl.split('/embed/')[1].split('?')[0];
+                } else if (project.videoUrl.includes('v=')) {
+                    videoId = project.videoUrl.split('v=')[1].split('&')[0];
+                }
                 
-                // Populate tech stack
-                const techStackContainer = document.getElementById('modalTechStack');
+                if (videoId) {
+                    modalVideo.style.display = 'block';
+                    modalVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0`;
+                    if (modalYoutubeLink) {
+                        modalYoutubeLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+                        if (modalYoutubeLink.parentElement) modalYoutubeLink.parentElement.style.display = 'block';
+                    }
+                    if (videoSection) videoSection.style.display = 'block';
+                } else {
+                    modalVideo.style.display = 'block';
+                    modalVideo.src = project.videoUrl;
+                    if (videoSection) videoSection.style.display = 'block';
+                }
+            } else if (videoSection) {
+                videoSection.style.display = 'none';
+                if (modalVideo) modalVideo.src = '';
+            }
+            
+            const descEl = document.getElementById('modalFullDescription');
+            if (descEl) descEl.textContent = project.fullDescription;
+            
+            // Populate tech stack
+            const techStackContainer = document.getElementById('modalTechStack');
+            if (techStackContainer) {
                 techStackContainer.innerHTML = project.techStack.map(tech => {
-                    // Get a class based on the technology
                     const techClass = getTechBadgeClass(tech.toLowerCase());
                     return `<span class="tech-badge ${techClass}">${tech}</span>`;
                 }).join('');
-                
-                // Populate features
-                const featuresContainer = document.getElementById('modalFeatures');
-                if (featuresContainer) {
-                    featuresContainer.innerHTML = project.features ? project.features.map(feature => 
-                        `<li>${feature}</li>`
-                    ).join('') : '<li>No specific features listed</li>';
-                }
-                
-                // Set CTA buttons
-                const liveDemoBtn = document.getElementById('modalLiveDemo');
-                const githubBtn = document.getElementById('modalGithubRepo');
-                
+            }
+            
+            // Populate features
+            const featuresContainer = document.getElementById('modalFeatures');
+            if (featuresContainer) {
+                featuresContainer.innerHTML = project.features ? project.features.map(feature => 
+                    `<li><i class="fa-solid fa-check" style="color:#22c55e; margin-right:6px;"></i> ${feature}</li>`
+                ).join('') : '<li>No specific features listed</li>';
+            }
+            
+            // Set CTA buttons
+            const liveDemoBtn = document.getElementById('modalLiveDemo');
+            const githubBtn = document.getElementById('modalGithubRepo') || document.getElementById('modalSourceCode');
+            
+            if (liveDemoBtn) {
                 if (project.liveDemo) {
                     liveDemoBtn.href = project.liveDemo;
                     liveDemoBtn.style.display = 'inline-flex';
                 } else {
                     liveDemoBtn.style.display = 'none';
                 }
-                
+            }
+            
+            if (githubBtn) {
                 if (project.github) {
                     githubBtn.href = project.github;
                     githubBtn.style.display = 'inline-flex';
                 } else {
                     githubBtn.style.display = 'none';
                 }
-                
-                // Show modal
-                projectModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
             }
-            else {
-                console.error(`Project with ID ${projectId} not found in projectsData array.`);
-            }
-        });
-    });
-
-    // Close modal when close button is clicked
-    if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', function() {
-            projectModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-    }
-
-    // Close modal when clicking outside of it
-    projectModal.addEventListener('click', function(e) {
-        if (e.target === projectModal) {
-            projectModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            
+            // Show floating popup card
+            projectModal.classList.add('active');
         }
     });
 
-    // Close modal on Escape key
     document.addEventListener('keydown', function(e) {
+        const projectModal = document.getElementById('projectModal');
         if (projectModal && e.key === 'Escape' && projectModal.classList.contains('active')) {
-            projectModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            closeModal();
         }
     });
 }
