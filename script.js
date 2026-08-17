@@ -304,22 +304,54 @@ const filterBtn = document.querySelectorAll('.filter-item');
 const projectsData = [
     {
         id: 0,
-        title: "Invoxa ERP",
-        description: "Complete Invoice, Expense & Report Management System with comprehensive financial tracking and automated reporting features.",
-        fullDescription: "A complete ERP solution designed for small to medium enterprises to manage invoices, expenses, and generate detailed reports. Features include multi-user support, role-based access, real-time dashboards, and export capabilities.",
+        title: "Invoxa ERP – Business Management & Invoicing",
+        description: "PWA-enabled ERP system for invoicing, inventory, users, and role-based access for small to mid-scale businesses.",
+        fullDescription: "Designed and developed a PWA-enabled ERP system for managing invoicing, inventory, users, and role-based access for small to mid-scale businesses. Built a scalable full-stack architecture using React.js, Node.js, Express.js, and MongoDB ensuring modularity and maintainability. Optimized APIs and database queries to reduce operational latency and improve system responsiveness.",
         videoUrl: "https://www.youtube.com/embed/WjkbQZY-KKw?si=2s44jw1GGWVyPzKT",
-        techStack: ["React", "Node.js", "MongoDB", "Express", "ANT Design", "Material-UI", "Bootstrap", "Tailwind CSS", "Chart.js", "Cloudinary"],
+        techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "PWA", "Material-UI", "Tailwind CSS", "Chart.js"],
         features: [
-            "Multi-user support with role-based access control",
-            "Real-time dashboards and analytics",
-            "Automated invoice generation and expense tracking",
-            "Export capabilities for financial reports"
+            "PWA-enabled for seamless mobile and desktop experience",
+            "Multi-user support with role-based access control (RBAC)",
+            "Real-time invoicing, expense tracking, and inventory management",
+            "Sub-second database query optimizations for zero operational latency"
         ],
         liveDemo: "https://invoxa-erp.netlify.app/",
-        github: ""
+        github: "https://github.com/Dev2139/Invoxa-ERP"
     },
     {
         id: 1,
+        title: "RestoPlus – Restaurant Management System",
+        description: "Full-stack MERN restaurant management platform streamlining menu, order, customer, and billing operations.",
+        fullDescription: "Developed a full-stack restaurant management system to streamline menu, order, customer, and billing operations using the MERN stack. Built responsive user interfaces and REST APIs with secure authentication and efficient database management, delivering a scalable solution for real-world restaurant operations.",
+        videoUrl: "",
+        techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API", "Tailwind CSS", "JWT Auth"],
+        features: [
+            "End-to-end menu management and order processing workflow",
+            "Customer billing & receipt generation system",
+            "Secure authentication and role management for restaurant staff",
+            "Responsive interfaces designed for desktop and POS tablets"
+        ],
+        liveDemo: "https://restoplus.netlify.app/",
+        github: "https://github.com/Dev2139/RestoPlus"
+    },
+    {
+        id: 2,
+        title: "College Predictor – Smart College Recommendation",
+        description: "Data-driven web platform predicting eligible colleges based on entrance ranks (JEE, NEET, MCET, KCET).",
+        fullDescription: "Built a data-driven web platform using Next.js and Tailwind CSS predicting eligible colleges based on JEE Mains, JEE Advanced, NEET, MCET, and KCET ranks, improving college shortlisting efficiency by 50%. Analyzed past-year admission trends to generate accurate predictions and personalized scholarship recommendations, increasing decision-making accuracy by 35%.",
+        videoUrl: "https://www.youtube.com/embed/eO0pg2DpbL8?si=SMm4XkdVCLSOKtFb",
+        techStack: ["Next.js", "Tailwind CSS", "TypeScript", "Data Analytics", "React", "Material-UI"],
+        features: [
+            "Multi-exam support: JEE Mains, JEE Advanced, NEET, MCET, and KCET",
+            "Improves college shortlisting efficiency by 50%",
+            "Increases decision-making accuracy by 35% using past admission trend analysis",
+            "Personalized scholarship and quota recommendations"
+        ],
+        liveDemo: "https://codinggita-collegepredictor.netlify.app/",
+        github: "https://github.com/Dev2139/codinggita-collegepredictor"
+    },
+    {
+        id: 3,
         title: "Travel Diaries",
         description: "A MERN Stack Project for travel enthusiasts to share and explore travel experiences.",
         fullDescription: "A full-stack social platform where users can document their travel experiences, share photos, and discover travel routes. Features include real-time messaging, location tracking, and community features.",
@@ -335,7 +367,7 @@ const projectsData = [
         github: "https://github.com/Dev2139/travel_diaries"
     },
     {
-        id: 2,
+        id: 4,
         title: "Home-Nest",
         description: "Home Rental and Management Platform with advanced search and booking features.",
         fullDescription: "A comprehensive platform for property listings and management. Features include advanced search filters, property management dashboard, booking system, and payment integration.",
@@ -349,21 +381,6 @@ const projectsData = [
         ],
         liveDemo: "https://rental-management-4l5m.vercel.app/",
         github: "https://github.com/Dev2139/Rental_Management"
-    },
-    {
-        id: 3,
-        title: "CodingGita College Predictor",
-        description: "College Prediction Based on Exam Scores using Machine Learning.",
-        fullDescription: "An ML-powered application that predicts suitable colleges based on student exam scores. Uses historical data and algorithms to provide accurate college recommendations.",
-        videoUrl: "https://www.youtube.com/embed/eO0pg2DpbL8?si=SMm4XkdVCLSOKtFb",
-        techStack: ["NextJs", "Tailwind CSS", "MUI", "JSON data"],
-        features: [
-            "Historical data analysis for recommendations",
-            "Accurate scoring algorithm",
-            "User-friendly interface for score input"
-        ],
-        liveDemo: "https://codinggita-collegepredictor.netlify.app/",
-        github: "https://github.com/Dev2139/codinggita-collegepredictor"
     },
     {
         id: 4,
