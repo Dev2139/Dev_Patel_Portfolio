@@ -776,6 +776,76 @@ img{
 
 .background-row .wrapper:nth-child(2){ width: 35%;}
 
+/* Devdhara Technologies Agency Styles */
+.agency-badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 7px;
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent-secondary);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+}
+
+.agency-link-wrapper {
+    display: block;
+    margin-top: 12px;
+}
+
+.btn-agency-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--accent-secondary);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 6px;
+    font-size: var(--font-size-12);
+    font-family: 'Fira Mono', 'Poppins', monospace;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-agency-link:hover {
+    background: var(--accent-gradient);
+    color: #18181b;
+    border-color: var(--accent-primary);
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-agency-link i {
+    font-size: 0.85em;
+    transition: transform 0.2s ease;
+}
+
+.btn-agency-link:hover i {
+    transform: translateX(3px);
+}
+
+.freelance-spotlight {
+    margin-bottom: 50px;
+    background: rgba(26, 26, 40, 0.6);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.freelance-spotlight:hover {
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
 .background-row .design-skill{margin-bottom: 40px;}
 
 .background-row .progress-detail{
